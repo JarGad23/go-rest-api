@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/JarGad23/go-rest-api/models"
+	"github.com/JarGad23/go-rest-api/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -44,5 +45,12 @@ func login(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"message": "Login successfully"})
+	token, err := utils.GenerateToken(user.Email, user.Id)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not authenticate user"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"message": "Login successfully", "token": token})
 }
