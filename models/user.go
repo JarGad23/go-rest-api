@@ -1,6 +1,11 @@
 package models
 
-import "github.com/JarGad23/go-rest-api/db"
+import (
+	"errors"
+
+	"github.com/JarGad23/go-rest-api/db"
+	"github.com/JarGad23/go-rest-api/utils"
+)
 
 type User struct {
 	Id       int64
@@ -20,7 +25,13 @@ func (u User) Save() error {
 
 	defer sqlStmt.Close()
 
-	result, err := sqlStmt.Exec(u.Email, u.Password)
+	hashedPassword, err := utils.HashPassword(u.Password)
+
+	if err != nil {
+		return err
+	}
+
+	result, err := sqlStmt.Exec(u.Email, hashedPassword)
 
 	if err != nil {
 		return err
@@ -30,4 +41,25 @@ func (u User) Save() error {
 
 	u.Id = userId
 	return err
+}
+
+func (u User) ValidateCredentials() error {
+	query := "SELECT password FROM users WHERE email = ?"
+
+	row := db.DB.QueryRow(query, u.Email)
+
+	var retrivedPassword string
+	err := row.Scan(&retrivedPassword)
+
+	if err != nil {
+		return errors.New("Invalid credentials")
+	}
+
+	passwordIsValid := utils.CheckPasswordHash(u.Password, retrivedPassword)
+
+	if !passwordIsValid {
+		return errors.New("Invalid credentials")
+	}
+
+	return nil
 }
