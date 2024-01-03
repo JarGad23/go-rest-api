@@ -1,9 +1,9 @@
 POST http://localhost:8080/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJleHAiOjE3MDQyMjE2OTMsInVzZXJJZCI6MH0.ERtWhhZxtM3ex_uUOCeTKkWpBxCB94YwB6KIRcEL3vg
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzA0MzE2NjMyLCJ1c2VySWQiOjJ9.G1XSlWZTFtsHE9Rxnde0DK7PcZx0HtasGsvDsLTsJbI
 
 {
-    "name": "Test Event 2",
+    "name": "Test Event aaa",
     "description": "another tesst event ",
     "location": "new location test event",
     "dateTime": "2024-01-02T15:30:00.000Z"
