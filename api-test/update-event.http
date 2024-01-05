@@ -1,6 +1,6 @@
-PUT http://localhost:8080/events/1
+PUT http://localhost:8080/events/4
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzA0MzE2NjMyLCJ1c2VySWQiOjJ9.G1XSlWZTFtsHE9Rxnde0DK7PcZx0HtasGsvDsLTsJbI
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzA0NDg0MzkzLCJ1c2VySWQiOjJ9.rhMZsbTNy40P38JTcQ1pM8Fwwy9xwpTmuMjrgYRgPxY
 
 
 {
